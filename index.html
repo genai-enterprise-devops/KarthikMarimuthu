@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps & GenAI Automation Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+            background-size: 200% 100%;
+            animation: gradient 3s ease-in-out infinite;
+        }
+
+        @keyframes gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+            font-weight: bold;
+        }
+
+        h1 {
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #4a5568;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #4a5568;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: rgba(102, 126, 234, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(102, 126, 234, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section h2 {
+            color: #2d3748;
+            margin-bottom: 25px;
+            font-size: 2em;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 4px solid #667eea;
+        }
+
+        .skill-category h3 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: rgba(102, 126, 234, 0.2);
+            color: #2d3748;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(102, 126, 234, 0.3);
+            transform: scale(1.05);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .project-title {
+            color: #2d3748;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .project-description {
+            color: #4a5568;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+
+        .project-metrics {
+            background: rgba(76, 175, 80, 0.1);
+            border-left: 3px solid #4caf50;
+            padding: 10px 15px;
+            margin-top: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .metric {
+            color: #2e7d32;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #667eea, #764ba2);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            background: rgba(102, 126, 234, 0.05);
+            padding: 25px;
+            border-radius: 15px;
+            margin-left: 20px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -35px;
+            top: 30px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #667eea;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+        }
+
+        .timeline-title {
+            color: #2d3748;
+            font-size: 1.3em;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .timeline-company {
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .timeline-description {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin-top: 40px;
+        }
+
+        .cta-title {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+        }
+
+        .cta-subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-card {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            padding: 30px 20px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+            display: block;
+        }
+
+        .stat-label {
+            color: #4a5568;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .contact-info {
+                gap: 15px;
+            }
+            
+            .section {
+                padding: 30px 20px;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header fade-in">
+            <div class="profile-img">DA</div>
+            <h1>DevOps & GenAI Automation Architect</h1>
+            <p class="subtitle">Leading Enterprise Automation & Intelligent CI/CD Solutions | 10+ Years Banking & Fintech</p>
+            
+            <div class="contact-info">
+                <a href="mailto:your.email@example.com" class="contact-item">
+                    📧 Email
+                </a>
+                <a href="https://linkedin.com/in/yourprofile" class="contact-item">
+                    💼 LinkedIn
+                </a>
+                <a href="https://github.com/yourprofile" class="contact-item">
+                    🐙 GitHub
+                </a>
+                <div class="contact-item">
+                    📍 Available Remote/Hybrid
+                </div>
+            </div>
+        </header>
+
+        <!-- Key Metrics Section -->
+        <section class="section fade-in">
+            <h2>Impact at Scale</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">1000+</span>
+                    <div class="stat-label">APIs Migrated</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">40%</span>
+                    <div class="stat-label">QA Effort Reduction</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">95%</span>
+                    <div class="stat-label">Automation Coverage</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">30-40%</span>
+                    <div class="stat-label">Faster Releases</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Skills Section -->
+        <section class="section fade-in">
+            <h2>Technical Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>🤖 AI & Automation</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">GPT-4 Integration</span>
+                        <span class="skill-tag">MCP Agents</span>
+                        <span class="skill-tag">LangChain</span>
+                        <span class="skill-tag">RAG Systems</span>
+                        <span class="skill-tag">Vector Databases</span>
+                        <span class="skill-tag">Pinecone</span>
+                        <span class="skill-tag">ChromaDB</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>🔧 DevOps & CI/CD</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Jenkins</span>
+                        <span class="skill-tag">GitHub Actions</span>
+                        <span class="skill-tag">Azure DevOps</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Terraform</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>🧪 Testing Frameworks</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Postman</span>
+                        <span class="skill-tag">ReadyAPI</span>
+                        <span class="skill-tag">Karate</span>
+                        <span class="skill-tag">Selenium</span>
+                        <span class="skill-tag">Playwright</span>
+                        <span class="skill-tag">Cypress</span>
+                        <span class="skill-tag">TestNG</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>💻 Programming</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Groovy</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">GraphQL</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>☁️ Cloud & Infrastructure</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Azure</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">Microservices</span>
+                        <span class="skill-tag">Monitoring</span>
+                        <span class="skill-tag">Logging</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>🏦 Domain Expertise</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Banking APIs</span>
+                        <span class="skill-tag">Payment Systems</span>
+                        <span class="skill-tag">Fintech</span>
+                        <span class="skill-tag">Compliance</span>
+                        <span class="skill-tag">Security Testing</span>
+                        <span class="skill-tag">WCAG/AODA</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Projects Section -->
+        <section class="section fade-in">
+            <h2>Featured Projects & Solutions</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-title">🚀 Enterprise API Migration Platform</div>
+                    <div class="project-description">
+                        Architected and implemented a comprehensive ReadyAPI-to-Postman migration solution using Python-based converters to automate complex XML/Groovy script transformations for large-scale banking applications.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">ReadyAPI</span>
+                        <span class="tech-tag">Postman</span>
+                        <span class="tech-tag">XML Processing</span>
+                        <span class="tech-tag">Groovy</span>
+                    </div>
+                    <div class="project-metrics">
+                        <div class="metric">✅ 1,000+ APIs successfully migrated</div>
+                        <div class="metric">✅ 95% automated conversion coverage</div>
+                        <div class="metric">✅ Reduced manual migration time by 80%</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">🤖 GenAI-Powered MCP Automation Server</div>
+                    <div class="project-description">
+                        Developed a production-grade MCP server enabling AI-driven test case generation directly from Jira, Confluence, and Git sources. Integrated GPT-4/GitHub Copilot for contextual test scenarios.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">GPT-4</span>
+                        <span class="tech-tag">MCP Protocol</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Jira API</span>
+                        <span class="tech-tag">Confluence</span>
+                    </div>
+                    <div class="project-metrics">
+                        <div class="metric">✅ 40% reduction in manual test planning</div>
+                        <div class="metric">✅ Integrated with 3 enterprise systems</div>
+                        <div class="metric">✅ Generated 500+ automated test cases</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">🧠 Intelligent RAG Knowledge System</div>
+                    <div class="project-description">
+                        Built a sophisticated Knowledge-Retrieval RAG System to generate precise test cases and regression packs by dynamically pulling project knowledge from multiple enterprise sources.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">RAG Architecture</span>
+                        <span class="tech-tag">Vector Databases</span>
+                        <span class="tech-tag">Pinecone</span>
+                        <span class="tech-tag">ChromaDB</span>
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">Knowledge Mining</span>
+                    </div>
+                    <div class="project-metrics">
+                        <div class="metric">✅ Processes 10,000+ documents</div>
+                        <div class="metric">✅ 85% accuracy in test case relevance</div>
+                        <div class="metric">✅ Reduced knowledge discovery time by 60%</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">🔧 AI-Powered Dependency Maintenance Bot</div>
+                    <div class="project-description">
+                        Engineered an intelligent maintenance system to auto-detect outdated dependencies, trigger AI-assisted upgrades, and maintain automation frameworks across multiple enterprise repositories.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">GitHub Actions</span>
+                        <span class="tech-tag">Dependency Scanning</span>
+                        <span class="tech-tag">AI Automation</span>
+                        <span class="tech-tag">Multi-repo Management</span>
+                        <span class="tech-tag">Security Scanning</span>
+                    </div>
+                    <div class="project-metrics">
+                        <div class="metric">✅ Monitors 50+ repositories</div>
+                        <div class="metric">✅ 90% automated patching success rate</div>
+                        <div class="metric">✅ Reduced security vulnerabilities by 70%</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">♿ AI-Driven Accessibility Compliance Engine</div>
+                    <div class="project-description">
+                        Integrated GPT-4 powered AI agents for automated accessibility compliance testing, ensuring full WCAG/AODA standards compliance with minimal manual intervention.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">GPT-4</span>
+                        <span class="tech-tag">WCAG Testing</span>
+                        <span class="tech-tag">AODA Compliance</span>
+                        <span class="tech-tag">Automated Scanning</span>
+                        <span class="tech-tag">Accessibility APIs</span>
+                    </div>
+                    <div class="project-metrics">
+                        <div class="metric">✅ 100% WCAG 2.1 AA compliance</div>
+                        <div class="metric">✅ Automated 15+ accessibility checks</div>
+                        <div class="metric">✅ Reduced manual testing by 75%</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">🏦 Banking Payment Automation Framework</div>
+                    <div class="project-description">
+                        Designed specialized automation frameworks for regulated financial systems including payment routing engines, transaction validations, and compliance reporting systems.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Banking APIs</span>
+                        <span class="tech-tag">Payment Processing</span>
+                        <span class="tech-tag">Compliance Testing</span>
+                        <span class="tech-tag">Security Validation</span>
+                        <span class="tech-tag">Regulatory Standards</span>
+                    </div>
+                    <div class="project-metrics">
+                        <div class="metric">✅ 99.9% transaction accuracy</div>
+                        <div class="metric">✅ Full regulatory compliance</div>
+                        <div class="metric">✅ Processed $100M+ in test transactions</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional Experience -->
+        <section class="section fade-in">
+            <h2>Professional Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-title">Lead DevOps Engineer & GenAI Automation Architect</div>
+                    <div class="timeline-company">Enterprise Banking Solutions • 2020 - Present</div>
+                    <div class="timeline-description">
+                        Leading enterprise-scale automation initiatives, architecting AI-driven testing solutions, and optimizing CI/CD pipelines for critical banking applications. Pioneered the integration of GenAI technologies into traditional DevOps workflows, resulting in unprecedented efficiency gains.
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-title">Senior DevOps Engineer</div>
+                    <div class="timeline-company">Fintech Innovation Hub • 2018 - 2020</div>
+                    <div class="timeline-description">
+                        Spearheaded the modernization of legacy testing frameworks and implementation of cloud-native CI/CD solutions. Established automation standards and mentored development teams on best practices for scalable test automation.
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-title">Automation Engineer</div>
+                    <div class="timeline-company">Digital Banking Platform • 2015 - 2018</div>
+                    <div class="timeline-description">
+                        Developed comprehensive API testing frameworks and established the foundation for automated regression testing. Built expertise in banking domain APIs and regulatory compliance testing requirements.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta-section fade-in">
+            <h2 class="cta-title">Ready to Transform Your DevOps?</h2>
+            <p class="cta-subtitle">Let's discuss how AI-driven automation can accelerate your development lifecycle and reduce operational overhead.</p>
+            <div class="cta-buttons">
+                <a href="mailto:your.email@example.com" class="cta-button">📧 Get In Touch</a>
+                <a href="#" class="cta-button">📋 Download Resume</a>
+                <a href="#" class="cta-button">📅 Schedule Call</a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Add smooth scrolling and animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate elements on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationDelay = '0s';
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections
+            document.querySelectorAll('.section').forEach(section => {
+                observer.observe(section);
+            });
+
+            // Add interactive hover effects for project cards
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Add click animation for skill tags
+            document.querySelectorAll('.skill-tag').forEach(tag => {
+                tag.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1.05)';
+                    }, 100);
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 200);
+                });
+            });
+
+            // Animate stats on scroll
+            const statsObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const statNumber = entry.target.querySelector('.stat-number');
+                        const finalValue = statNumber.textContent;
+                        
+                        // Simple counter animation for numbers
+                        if (finalValue.includes('+')) {
+                            const numValue = parseInt(finalValue.replace(/\D/g, ''));
+                            let current = 0;
+                            const increment = numValue / 50;
+                            const timer = setInterval(() => {
+                                current += increment;
+                                if (current >= numValue) {
+                                    statNumber.textContent = finalValue;
+                                    clearInterval(timer);
+                                } else {
+                                    statNumber.textContent = Math.floor(current) + '+';
+                                }
+                            }, 30);
+                        } else if (finalValue.includes('%')) {
+                            const numValue = parseInt(finalValue.replace(/\D/g, ''));
+                            let current = 0;
+                            const increment = numValue / 50;
+                            const timer = setInterval(() => {
+                                current += increment;
+                                if (current >= numValue) {
+                                    statNumber.textContent = finalValue;
+                                    clearInterval(timer);
+                                } else {
+                                    statNumber.textContent = Math.floor(current) + '%';
+                                }
+                            }, 30);
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all stat cards
+            document.querySelectorAll('.stat-card').forEach(card => {
+                statsObserver.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
