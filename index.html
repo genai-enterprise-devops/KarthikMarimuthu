@@ -435,6 +435,74 @@
         .section:nth-child(3) { animation-delay: 0.3s; }
         .section:nth-child(4) { animation-delay: 0.4s; }
         .section:nth-child(5) { animation-delay: 0.5s; }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 15% auto;
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            color: white;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .close {
+            color: white;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+        }
+
+        .close:hover {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .contact-details {
+            margin-top: 20px;
+        }
+
+        .contact-detail {
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .contact-detail a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-detail a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-detail strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
     </style>
 </head>
 <body>
@@ -446,17 +514,17 @@
             <p class="subtitle">Leading Enterprise Automation & Intelligent CI/CD Solutions | 10+ Years Banking & Fintech</p>
             
             <div class="contact-info">
-                <a href="mailto:your.actual.email@example.com" class="contact-item">
+                <a href="mailto:ktkarthiktamil@gmail.com" class="contact-item">
                     📧 Email
                 </a>
-                <a href="https://linkedin.com/in/your-actual-profile" class="contact-item">
+                <a href="https://www.linkedin.com/in/karthik-marimuthu-5416091ba/" class="contact-item">
                     💼 LinkedIn
                 </a>
                 <a href="https://github.com/KarthikTools" class="contact-item">
                     🐙 GitHub
                 </a>
                 <div class="contact-item">
-                    📍 Available Remote/Hybrid
+                    📱 +1 (647) 676-8762
                 </div>
             </div>
         </header>
@@ -721,11 +789,34 @@
             <h2 class="cta-title">Ready to Transform Your DevOps?</h2>
             <p class="cta-subtitle">Let's discuss how AI-driven automation can accelerate your development lifecycle and reduce operational overhead.</p>
             <div class="cta-buttons">
-                <a href="mailto:your.email@example.com" class="cta-button">📧 Get In Touch</a>
-                <a href="#" class="cta-button">📋 Download Resume</a>
-                <a href="#" class="cta-button">📅 Schedule Call</a>
+                <button onclick="showContactInfo()" class="cta-button">📧 Get In Touch</button>
+                <a href="resume.txt" download class="cta-button">📋 Download Resume</a>
+                <a href="cover-letter.txt" download class="cta-button">📄 Download Cover Letter</a>
+                <a href="https://calendly.com/your-calendar-link" target="_blank" class="cta-button">📅 Schedule Call</a>
             </div>
         </section>
+
+        <!-- Contact Info Modal -->
+        <div id="contactModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close" onclick="closeContactModal()">&times;</span>
+                <h3>📞 Contact Information</h3>
+                <div class="contact-details">
+                    <div class="contact-detail">
+                        <strong>📧 Email:</strong>
+                        <a href="mailto:ktkarthiktamil@gmail.com">ktkarthiktamil@gmail.com</a>
+                    </div>
+                    <div class="contact-detail">
+                        <strong>📱 Mobile:</strong>
+                        <a href="tel:+16476768762">+1 (647) 676-8762</a>
+                    </div>
+                    <div class="contact-detail">
+                        <strong>💼 LinkedIn:</strong>
+                        <a href="https://www.linkedin.com/in/karthik-marimuthu-5416091ba/" target="_blank">Karthik Marimuthu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -818,6 +909,23 @@
             document.querySelectorAll('.stat-card').forEach(card => {
                 statsObserver.observe(card);
             });
+
+            // Modal functionality
+            window.showContactInfo = function() {
+                document.getElementById('contactModal').style.display = 'block';
+            }
+
+            window.closeContactModal = function() {
+                document.getElementById('contactModal').style.display = 'none';
+            }
+
+            // Close modal when clicking outside of it
+            window.onclick = function(event) {
+                const modal = document.getElementById('contactModal');
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            }
         });
     </script>
 </body>
