@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DevOps & GenAI Automation Portfolio</title>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
     <style>
         * {
             margin: 0;
@@ -795,6 +804,11 @@
             </div>
         </section>
 
+        <!-- Hit Counter -->
+        <div style="position: fixed; bottom: 20px; right: 20px; background: rgba(102, 126, 234, 0.9); color: white; padding: 10px 15px; border-radius: 20px; font-size: 12px; z-index: 1000;">
+            <span id="hitCounter">Loading...</span> visits
+        </div>
+
         <!-- Contact Info Modal -->
         <div id="contactModal" class="modal" style="display: none;">
             <div class="modal-content">
@@ -925,6 +939,18 @@
                     modal.style.display = 'none';
                 }
             }
+
+            // Simple hit counter
+            function updateHitCounter() {
+                const counter = document.getElementById('hitCounter');
+                const currentHits = localStorage.getItem('portfolioHits') || 0;
+                const newHits = parseInt(currentHits) + 1;
+                localStorage.setItem('portfolioHits', newHits);
+                counter.textContent = newHits;
+            }
+            
+            // Update counter on page load
+            updateHitCounter();
         });
     </script>
 </body>
